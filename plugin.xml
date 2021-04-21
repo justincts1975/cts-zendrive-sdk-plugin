@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com-zendrive-phonegap-sdk"
+    id="cts-zendrive-sdk-plugin"
     version="0.1.0">
 
-    <name>Zendrive</name>
-    <description>Phonegap plugin for the Zendrive SDK.</description>
+    <name>cts-zendrive-sdk-plugin</name>
+    <description>CTS Phonegap plugin for the Zendrive SDK.</description>
 
     <engines>
         <engine name="cordova" version=">=3.4.0"/>
