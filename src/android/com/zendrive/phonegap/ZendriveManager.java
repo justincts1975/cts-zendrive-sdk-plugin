@@ -4,8 +4,12 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
+
 import android.support.v4.content.LocalBroadcastManager;
+
 import com.zendrive.sdk.AccidentInfo;
 import com.zendrive.sdk.ActiveDriveInfo;
 import com.zendrive.sdk.AnalyzedDriveInfo;
@@ -28,6 +32,8 @@ import org.json.JSONObject;
 public class ZendriveManager {
 
     // String Constants
+    private static final String TRACKING_ID = "trackingId";
+
     // ZendriveLocationPoint dictionary keys
     private static final String LATITUDE_KEY = "latitude";
     private static final String LONGITUDE_KEY = "longitude";
@@ -53,6 +59,7 @@ public class ZendriveManager {
     // Callbacks
     private CallbackContext processStartOfDriveCallback;
     private CallbackContext processEndOfDriveCallback;
+    private SharedPreferences prefs;
 
     private static ZendriveManager sharedInstance;
 
@@ -72,6 +79,7 @@ public class ZendriveManager {
 
     private ZendriveManager(Context context) {
         this.context = context.getApplicationContext();
+        prefs = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     public static synchronized void teardown(Context context, final CallbackContext callbackContext) {
@@ -259,5 +267,14 @@ public class ZendriveManager {
 
     public void onDriveAnalyzed(AnalyzedDriveInfo analyzedDriveInfo) {
 
+    }
+
+
+    public String getTrackingId() {
+        return prefs.getString(TRACKING_ID, null);
+    }
+
+    public void setTrackingId(String trackingId) {
+        prefs.edit().putString(TRACKING_ID, trackingId).apply();
     }
 }

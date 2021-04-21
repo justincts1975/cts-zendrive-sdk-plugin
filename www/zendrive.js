@@ -180,6 +180,35 @@ Zendrive.setDriveDetectionMode = function (driveDetectionMode) {
     exec(null, null, "Zendrive", "setDriveDetectionMode", [driveDetectionMode]);
 };
 
+/*************************************************************************************************
+********* Fairmatic Additions ********************************************************************
+**************************************************************************************************/
+Zendrive.pickupPassenger = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "Zendrive", "pickupPassenger", []);
+	return true;
+};
+
+Zendrive.dropoffPassenger = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "Zendrive", "dropoffPassenger", []);
+	return true;
+};
+
+Zendrive.acceptPassengerRequest = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "Zendrive", "acceptPassengerRequest", []);
+	return true;
+};
+
+Zendrive.goOnDuty = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "Zendrive", "goOnDuty", []);
+	return true;
+};
+
+Zendrive.goOffDuty = function(successCallback, errorCallback) {
+    exec(successCallback, errorCallback, "Zendrive", "goOffDuty", []);
+	return true;
+};
+/*************************************************************************************************/
+
 /**
  * Dictates the functioning of Zendrive’s drive detection
  * @enum {number}
@@ -199,7 +228,9 @@ Zendrive.ZendriveDriveDetectionMode = {
      *  invoke the @{@link Zendrive.startDrive} method.
      * @type {Number}
      */
-    ZendriveDriveDetectionModeAutoOFF: 1
+    ZendriveDriveDetectionModeAutoOFF: 1,
+
+    ZendriveDriveDetectionModeInsurance: 2
 };
 
 /**
@@ -301,7 +332,7 @@ Zendrive.ZendriveConfiguration = function (applicationKey, driverId) {
      * This mode can be changed at a later point using @{@link Zendrive.setDriveDetectionMode} method.
      * @type {Zendrive.ZendriveDriveDetectionMode}
      */
-    this.driveDetectionMode = Zendrive.ZendriveDriveDetectionMode.ZendriveDriveDetectionModeAutoON;
+    this.driveDetectionMode = Zendrive.ZendriveDriveDetectionMode.ZendriveDriveDetectionModeInsurance;
 };
 
 /**
