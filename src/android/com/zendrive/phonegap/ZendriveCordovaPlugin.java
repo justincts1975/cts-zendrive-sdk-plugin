@@ -39,7 +39,7 @@ public class ZendriveCordovaPlugin extends CordovaPlugin {
             CORDOVA_INSTANCE = cordova;
         }
         ZendriveManager.init(cordova.getContext());
-        requestPermissions();
+        //requestPermissions();
     }
 
     static CordovaInterface getCordovaInstance() {
@@ -117,6 +117,11 @@ public class ZendriveCordovaPlugin extends CordovaPlugin {
                 return;
             }
         }
+    }
+
+    @Override
+    public void requestPermissions(int requestCode) {
+        cordova.requestPermissions(this, requestCode, permission.ACCESS_FINE_LOCATION);
     }
 
     private void setup(JSONArray args) throws JSONException {
