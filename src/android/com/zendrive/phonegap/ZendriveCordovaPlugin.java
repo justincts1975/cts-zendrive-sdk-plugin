@@ -121,7 +121,7 @@ public class ZendriveCordovaPlugin extends CordovaPlugin {
 
     @Override
     public void requestPermissions(int requestCode) {
-        cordova.requestPermissions(this, requestCode, permission.ACCESS_FINE_LOCATION);
+        cordova.requestPermission(this, requestCode, permission.ACCESS_FINE_LOCATION);
     }
 
     private void setup(JSONArray args) throws JSONException {
